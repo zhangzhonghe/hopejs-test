@@ -1187,7 +1187,7 @@
         // 每个 block 应该保存下父 block 的 rootElement，
         // 以便在更新的时候能够获取到正确的 rootElement。
         const blockRootElement = blockFragment._elementStack[0] ||
-            childBlockFragment?._parentBlockRootElement;
+            (childBlockFragment && childBlockFragment._parentBlockRootElement);
         if (blockRootElement) {
             (blockRootElement[key] || (blockRootElement[key] = new Set())).add(something);
             // 用于对象销毁时清空列表。
@@ -2203,7 +2203,7 @@
 </head>
 
 <body>
-    <div id="app"></div>
+    <div id="app">123456</div>
     <script>
         const {
             reactive,
@@ -2244,41 +2244,41 @@
             color: 'red',
             show: true,
             comment: '123',
-            list: Array(3).fill(null),
+            list: Array(100).fill(null),
             zIndex: 0
         })
 
         const [com, $com] = defineComponent(({
             props
         }) => {
-            // s('.name', {
-            //     width: '100px',
-            //     height: '100px',
-            //     flex: '1',
-            //     backgroundColor: () => state.color
-            // })
+            s('.name', {
+                width: '100px',
+                height: '100px',
+                flex: '1',
+                backgroundColor: () => state.color
+            })
 
-            // media('(max-width: 3000px)', () => {
-            //     // s('.name', {
-            //     //   backgroundColor: 'blue'
-            //     // })
-            //     media('(min-width: 300px)', () => {
-            //         s('.name', {
-            //             backgroundColor: () => 'blue'
-            //         })
-            //     })
-            // })
+            media('(max-width: 3000px)', () => {
+                // s('.name', {
+                //   backgroundColor: 'blue'
+                // })
+                media('(min-width: 300px)', () => {
+                    s('.name', {
+                        backgroundColor: () => 'blue'
+                    })
+                })
+            })
 
-            // keyframes(() => {
-            //   s('from', {
-            //     width: '100px',
-            //     color: 'red'
-            //   })
+            keyframes(() => {
+                s('from', {
+                width: '100px',
+                color: 'red'
+                })
 
-            //   s('to', {
-            //     width: '200px'
-            //   })
-            // })
+                s('to', {
+                    width: '200px'
+                })
+            })
 
             div()
             hClass('name')
