@@ -2251,23 +2251,23 @@
         const [com, $com] = defineComponent(({
             props
         }) => {
-            s('.name', {
-                width: '100px',
-                height: '100px',
-                flex: '1',
-                backgroundColor: () => state.color
-            })
+            // s('.name', {
+            //     width: '100px',
+            //     height: '100px',
+            //     flex: '1',
+            //     backgroundColor: () => state.color
+            // })
 
-            media('(max-width: 3000px)', () => {
-                // s('.name', {
-                //   backgroundColor: 'blue'
-                // })
-                media('(min-width: 300px)', () => {
-                    s('.name', {
-                        backgroundColor: () => 'blue'
-                    })
-                })
-            })
+            // media('(max-width: 3000px)', () => {
+            //     // s('.name', {
+            //     //   backgroundColor: 'blue'
+            //     // })
+            //     media('(min-width: 300px)', () => {
+            //         s('.name', {
+            //             backgroundColor: () => 'blue'
+            //         })
+            //     })
+            // })
 
             // keyframes(() => {
             //   s('from', {
